@@ -1,0 +1,15 @@
+
+<h1>Coffeeshops & Bookstores</h1>
+ {{#each places}}
+    <li><a href="single/{{id}}">{{name}} - {{type}}</a></li>
+      <form action="/place/update/{{_id}}" method="GET">
+  <button>Edit</button></form>
+    <form action="/place/{{_id}}/delete" method="POST">
+  <button>Delete</button></form>
+  {{/each}}
+
+<p><a href="create">Add a new place</a></p>
+
+
+
+
