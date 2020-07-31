@@ -5,14 +5,20 @@ const express = require('express');
 const createError = require('http-errors');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
+const hbs = require('hbs');
+const hbsJsonHelper = require('hbs-json');
 const serveFavicon = require('serve-favicon');
 const indexRouter = require('./routes/index');
 const placeRouter = require('./routes/place');
+
+
 
 const app = express();
 
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerHelper('json', hbsJsonHelper );
+hbs.registerPartials(join(__dirname, 'views/partials'));
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
@@ -27,6 +33,11 @@ app.use(
 app.use(express.static(join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+  res.locals.environmentVariables = process.env;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/place', placeRouter);

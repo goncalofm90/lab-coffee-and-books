@@ -8,7 +8,7 @@
       },
       type: {
         type: String,
-        enum: ['coffee_shop', 'bookstore']
+        enum: ['coffeeshop', 'bookstore']
       },
       location: {
         type: {

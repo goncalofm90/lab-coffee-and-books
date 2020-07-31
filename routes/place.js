@@ -55,8 +55,8 @@ router.get('/single/:placeId', (req, res, next) => {
   });
 });
 
-router.get('update/:placeId', (req, res, next) => {
-  const placeId = req.params.id;
+router.get('/update/:placeId', (req, res, next) => {
+  const placeId = req.params.placeId;
   Place.findById({_id: placeId})
   .then(place => {
     res.render('place/update', {place});
@@ -66,7 +66,7 @@ router.get('update/:placeId', (req, res, next) => {
   });
 });
 
-router.post('update/:placeId',(req, res,next) => {
+router.post('/update/:placeId',(req, res,next) => {
   const placeId = req.params.placeId;
   const name = req.body.name;
   const type = req.body.type;
@@ -82,15 +82,15 @@ router.post('update/:placeId',(req, res,next) => {
         coordinates: [latitude, longitude]
       }
     }
-  ).then(place => {
-    res.render('place/update', {place});
+  ).then(() => {
+    res.redirect('/place/list');
   })
   .catch(err => {
     next(err);
   });
 });
 
-router.post('/:placeId/delete', (req, res, next) => {
+router.post('/delete/:placeId', (req, res, next) => {
   const placeId = req.params.placeId;
 
 

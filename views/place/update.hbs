@@ -1,1 +1,17 @@
-<h1>PLACE EDIT</h1>
+<h1>Edit coffeeshop / bookstore</h1>
+
+<form method="POST">
+<p><label for="type">Select place type:</label>
+<select name="type">
+  <option value="coffeeshop">Coffeeshop</option>
+  <option value="bookstore">Bookstore</option>
+</select>
+</p>
+<label for="place-name">Name of the place:</label>
+<input type="text" name="name" value="{{place.name}}"></input>
+<label for="latitude-input">Latitude:</label>
+<input type="text" name="latitude" value={{place.location.coordinates.[1]}}></input>
+<label for="longitude-input">Longitude:</label>
+<input type="text" name="longitude" value={{place.location.coordinates.[0]}}></input>
+<p style= "text-align: center"><button>Edit Place</button></p>
+</form>

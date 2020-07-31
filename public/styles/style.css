@@ -62,4 +62,8 @@ textarea {
   min-height: 8em;
   resize: vertical; }
 
+#map-container {
+  height: 50vh;
+  width: 50vw; }
+
 /*# sourceMappingURL=style.css.map */
